@@ -1,0 +1,26 @@
+
+> library-frontend@1.0.0 dev
+> vite
+
+
+  [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m308[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m13:40:18[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m13:40:25[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Home.jsx, /src/index.css[22m
+[2m13:40:30[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Admin.jsx, /src/index.css[22m
+[2m13:41:09[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Admin.jsx, /src/index.css[22m
+[2m13:44:25[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+[2m13:44:25[22m [36m[1m[vite][22m[39m server restarted.
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://10.160.100.27:[1m5173[22m/[39m
+[2m13:46:15[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+[2m13:46:15[22m [36m[1m[vite][22m[39m server restarted.
+[2m13:51:46[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Admin.jsx, /src/index.css[22m
+[2m13:57:56[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+[2m13:57:56[22m [36m[1m[vite][22m[39m server restarted.
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m80[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://10.160.100.27:[1m80[22m/[39m

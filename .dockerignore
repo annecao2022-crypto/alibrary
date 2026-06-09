@@ -1,0 +1,12 @@
+frontend/node_modules
+frontend/dist
+backend/__pycache__
+backend/*.pyc
+backend/library.db
+backend/uploads
+*.bat
+*.js
+screenshot*.png
+debug*.png
+verify*.png
+node_modules

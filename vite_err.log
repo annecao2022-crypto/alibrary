@@ -1,0 +1,85 @@
+[2m13:39:29[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)
+[2m13:40:18[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/admin/me[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:40:43[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/admin/login[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:40:48[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:40:50[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:40:52[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:41:16[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:41:17[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:41:27[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:42:01[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:42:02[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books?category=%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:42:03[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:42:03[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books?category=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:42:04[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books?category=%E5%85%B6%E4%BB%96[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:42:05[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:42:07[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1193:18)
+    at afterConnectMultiple (node:net:1783:7)
+[2m13:48:07[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+Error: write ECONNRESET
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at doWrite (node:internal/streams/writable:596:12)
+    at clearBuffer (node:internal/streams/writable:781:7)
+    at Writable.uncork (node:internal/streams/writable:529:7)
+    at connectionCorkNT (node:_http_outgoing:981:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+[2m13:53:32[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/books[39m
+Error: write ECONNRESET
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at doWrite (node:internal/streams/writable:596:12)
+    at clearBuffer (node:internal/streams/writable:781:7)
+    at Writable.uncork (node:internal/streams/writable:529:7)
+    at connectionCorkNT (node:_http_outgoing:981:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
