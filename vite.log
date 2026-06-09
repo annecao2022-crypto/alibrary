@@ -24,3 +24,21 @@
 
   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m80[22m/[39m
   [32m➜[39m  [1mNetwork[22m: [36mhttp://10.160.100.27:[1m80[22m/[39m
+[2m14:00:18[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+[2m14:00:18[22m [36m[1m[vite][22m[39m server restarted.
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://10.160.100.27:[1m5173[22m/[39m
+[2m14:05:04[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/PreviewModal.jsx, /src/index.css[22m
+[2m14:07:19[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/PreviewModal.jsx, /src/index.css[22m
+[2m14:07:19[22m [36m[1m[vite][22m[39m [32m✨ new dependencies optimized: [33mepubjs[32m[39m
+[2m14:07:19[22m [36m[1m[vite][22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[2m14:07:24[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/BookCard.jsx, /src/index.css[22m
+[2m14:10:15[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/EpubViewer.jsx, /src/index.css[22m
+[2m14:10:21[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/EpubViewer.jsx, /src/index.css[22m
+[2m14:10:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/EpubViewer.jsx, /src/index.css[22m
+[2m14:11:32[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/EpubViewer.jsx, /src/index.css[22m
+[2m14:14:25[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/EpubViewer.jsx, /src/index.css[22m
+[2m14:14:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/PreviewModal.jsx, /src/index.css[22m
+[2m14:18:18[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+[2m14:18:18[22m [36m[1m[vite][22m[39m server restarted.
