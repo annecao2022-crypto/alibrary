@@ -1,10 +1,14 @@
 @echo off
-echo Starting Anne's Library...
+echo Stopping old processes...
+for /f "tokens=5" %%a in ('netstat -ano 2^>nul ^| findstr ":5173 " ^| findstr "LISTENING"') do taskkill /f /pid %%a >nul 2>&1
+for /f "tokens=5" %%a in ('netstat -ano 2^>nul ^| findstr ":8000 " ^| findstr "LISTENING"') do taskkill /f /pid %%a >nul 2>&1
+timeout /t 1 /nobreak >nul
 
-start "Backend" /d "%~dp0backend" cmd /k "python -m uvicorn main:app --reload"
+echo Starting Anne's Library...
+start "Backend"  /d "%~dp0backend"  cmd /k "title Backend  && python -m uvicorn main:app --reload"
 timeout /t 3 /nobreak >nul
 
-start "Frontend" /d "%~dp0frontend" cmd /k "npm run dev"
+start "Frontend" /d "%~dp0frontend" cmd /k "title Frontend && npm run dev"
 timeout /t 5 /nobreak >nul
 
-powershell -ExecutionPolicy Bypass -File "%~dp0tunnel.ps1"
+start "Public Link" powershell -ExecutionPolicy Bypass -File "%~dp0tunnel.ps1"

@@ -20,6 +20,13 @@ class BookResponse(BookBase):
     model_config = {"from_attributes": True}
 
 
+class BookUpdate(BaseModel):
+    title: Optional[str] = None
+    author: Optional[str] = None
+    category: Optional[str] = None
+    description: Optional[str] = None
+
+
 class Token(BaseModel):
     access_token: str
     token_type: str
@@ -28,3 +35,15 @@ class Token(BaseModel):
 class LoginRequest(BaseModel):
     username: str
     password: str
+
+
+class WishCreate(BaseModel):
+    name: Optional[str] = None
+    content: str
+
+
+class WishResponse(WishCreate):
+    id: int
+    created_at: datetime
+
+    model_config = {"from_attributes": True}

@@ -1,3 +1,4 @@
+import io
 import os
 import re
 import uuid
@@ -14,6 +15,61 @@ import schemas
 from auth import get_current_admin
 
 router = APIRouter()
+
+CATEGORY_KEYWORDS = {
+    "编程技术": ["python", "java", "javascript", "typescript", "c++", "golang", "rust",
+                 "程序", "编程", "代码", "算法", "数据结构", "web", "开发", "前端", "后端",
+                 "linux", "docker", "database", "sql", "api", "framework"],
+    "人工智能": ["ai", "人工智能", "machine learning", "deep learning", "神经网络",
+                 "机器学习", "深度学习", "nlp", "gpt", "llm", "transformer", "pytorch", "tensorflow"],
+    "系统架构": ["系统设计", "架构", "distributed", "微服务", "cloud", "devops",
+                 "system design", "scalable", "高并发", "分布式"],
+    "数学": ["数学", "math", "statistics", "统计", "calculus", "linear algebra",
+             "线性代数", "概率", "probability"],
+    "文学": ["小说", "novel", "story", "fiction", "诗", "散文", "essay",
+             "文学", "biography", "传记"],
+    "历史": ["历史", "history", "朝代", "战争", "文明", "civilization"],
+}
+
+def auto_categorize(title: str, author: str = "") -> str:
+    text = (title + " " + (author or "")).lower()
+    for category, keywords in CATEGORY_KEYWORDS.items():
+        if any(k in text for k in keywords):
+            return category
+    return "其他"
+
+
+def detect_from_bytes(content: bytes, filename: str) -> dict:
+    ext = os.path.splitext(filename)[1].lstrip(".").lower()
+    title = os.path.splitext(filename)[0]
+    author = None
+
+    if ext == "pdf":
+        try:
+            import pypdf
+            reader = pypdf.PdfReader(io.BytesIO(content))
+            meta = reader.metadata
+            if meta:
+                if meta.title and meta.title.strip(): title = meta.title.strip()
+                if meta.author and meta.author.strip(): author = meta.author.strip()
+        except Exception:
+            pass
+
+    elif ext == "epub":
+        try:
+            with zipfile.ZipFile(io.BytesIO(content)) as z:
+                container = z.read("META-INF/container.xml").decode("utf-8")
+                opf_path = re.search(r'full-path="([^"]+)"', container).group(1)
+                opf = z.read(opf_path).decode("utf-8")
+                t = re.search(r'<dc:title[^>]*>([^<]+)</dc:title>', opf)
+                a = re.search(r'<dc:creator[^>]*>([^<]+)</dc:creator>', opf)
+                if t: title = t.group(1).strip()
+                if a: author = a.group(1).strip()
+        except Exception:
+            pass
+
+    return {"title": title, "author": author, "category": auto_categorize(title, author or ""), "format": ext}
+
 
 DATA_DIR = os.environ.get("DATA_DIR", os.path.dirname(os.path.dirname(__file__)))
 UPLOAD_DIR = os.path.join(DATA_DIR, "uploads")
@@ -35,6 +91,17 @@ MEDIA_TYPES = {
     "doc":  "application/msword",
     "docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 }
+
+
+@router.post("/detect")
+async def detect_metadata(
+    file: UploadFile = File(...),
+    _admin=Depends(get_current_admin),
+):
+    content = await file.read()
+    result = detect_from_bytes(content, file.filename or "unknown")
+    result["size"] = len(content)
+    return result
 
 
 @router.get("", response_model=List[schemas.BookResponse])
@@ -193,6 +260,23 @@ def epub_text(book_id: int, chapter: int = 0, db: Session = Depends(get_db)):
         return {"total": total, "chapter": chapter, "content": ex.text()}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.patch("/{book_id}", response_model=schemas.BookResponse)
+def update_book(
+    book_id: int,
+    update: schemas.BookUpdate,
+    db: Session = Depends(get_db),
+    _admin=Depends(get_current_admin),
+):
+    book = db.query(models.Book).filter(models.Book.id == book_id).first()
+    if not book:
+        raise HTTPException(status_code=404, detail="书籍不存在")
+    for field, value in update.model_dump(exclude_none=True).items():
+        setattr(book, field, value)
+    db.commit()
+    db.refresh(book)
+    return book
 
 
 @router.delete("/{book_id}")

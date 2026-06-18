@@ -18,9 +18,33 @@ class Book(Base):
     created_at = Column(DateTime, server_default=func.now())
 
 
+class Like(Base):
+    __tablename__ = "likes"
+    id         = Column(Integer, primary_key=True, index=True)
+    book_id    = Column(Integer, nullable=True, index=True)
+    zlib_title = Column(String(500), nullable=True)
+    zlib_url   = Column(String(1000), nullable=True)
+    created_at = Column(DateTime, server_default=func.now())
+
+
+class SiteConfig(Base):
+    __tablename__ = "site_config"
+    key   = Column(String(50), primary_key=True)
+    value = Column(Text, nullable=False, default="")
+
+
 class Admin(Base):
     __tablename__ = "admins"
 
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String(50), unique=True, nullable=False)
     hashed_password = Column(String(200), nullable=False)
+
+
+class Wish(Base):
+    __tablename__ = "wishes"
+
+    id         = Column(Integer, primary_key=True, index=True)
+    name       = Column(String(100), nullable=True)
+    content    = Column(Text, nullable=False)
+    created_at = Column(DateTime, server_default=func.now())

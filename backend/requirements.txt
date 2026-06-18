@@ -6,4 +6,8 @@ bcrypt
 python-multipart
 fpdf2
 aiofiles
+pypdf
+requests
+beautifulsoup4
+lxml
 python-dotenv

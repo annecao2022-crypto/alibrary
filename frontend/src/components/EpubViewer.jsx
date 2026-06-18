@@ -1,5 +1,7 @@
 import { useEffect, useState, useCallback } from 'react'
 
+const progressKey = (id) => `epub_progress_${id}`
+
 export default function EpubViewer({ bookId }) {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -9,12 +11,19 @@ export default function EpubViewer({ bookId }) {
     setLoading(true)
     fetch(`/api/books/${bookId}/epub-text?chapter=${ch}`)
       .then((r) => r.json())
-      .then((d) => { setData(d); setChapter(d.chapter) })
+      .then((d) => {
+        setData(d)
+        setChapter(d.chapter)
+        localStorage.setItem(progressKey(bookId), String(d.chapter))
+      })
       .catch(() => setData({ error: true }))
       .finally(() => setLoading(false))
   }, [bookId])
 
-  useEffect(() => { loadChapter(0) }, [loadChapter])
+  useEffect(() => {
+    const saved = parseInt(localStorage.getItem(progressKey(bookId)) || '0', 10)
+    loadChapter(isNaN(saved) ? 0 : saved)
+  }, [loadChapter, bookId])
 
   const prev = () => { if (chapter > 0) loadChapter(chapter - 1) }
   const next = () => { if (data && chapter < data.total - 1) loadChapter(chapter + 1) }
@@ -67,7 +76,15 @@ export default function EpubViewer({ bookId }) {
         >
           ← 上一章
         </button>
-        <span className="text-xs text-slate-400">第 {chapter + 1} 章 / 共 {data.total} 章</span>
+        <div className="flex flex-col items-center gap-0.5">
+          <span className="text-xs text-slate-400">第 {chapter + 1} 章 / 共 {data.total} 章</span>
+          {chapter > 0 && (
+            <button onClick={() => loadChapter(0)}
+              className="text-xs text-slate-300 hover:text-blue-400 transition-colors leading-none">
+              从头开始
+            </button>
+          )}
+        </div>
         <button
           onClick={next}
           disabled={chapter >= data.total - 1}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import EpubViewer from './EpubViewer'
 
-const NEW_TAB_FORMATS = new Set(['pdf', 'mobi', 'azw', 'azw3', 'cbz', 'cbr', 'djvu', 'doc', 'docx'])
+const NEW_TAB_FORMATS = new Set(['mobi', 'azw', 'azw3', 'cbz', 'cbr', 'djvu', 'doc', 'docx'])
 const IMAGE_FORMATS = new Set(['jpg', 'jpeg', 'png'])
 
 export default function PreviewModal({ book, onClose }) {
@@ -51,7 +51,17 @@ export default function PreviewModal({ book, onClose }) {
         {/* Preview body */}
         <div className="flex-1 overflow-hidden min-h-0 relative">
 
-          {/* PDF / 不可内嵌格式 → 新标签页 */}
+          {/* PDF → 内联 iframe */}
+          {fmt === 'pdf' && (
+            <iframe
+              src={previewUrl}
+              title={book.title}
+              className="w-full border-0"
+              style={{ height: '75vh' }}
+            />
+          )}
+
+          {/* 不可内嵌格式 → 新标签页 */}
           {NEW_TAB_FORMATS.has(fmt) && (
             <div className="flex flex-col items-center justify-center h-full gap-5 bg-slate-50" style={{ minHeight: '60vh' }}>
               <span className="text-6xl">📄</span>

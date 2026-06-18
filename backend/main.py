@@ -7,6 +7,10 @@ from database import engine
 import models
 from routers.books import router as books_router
 from routers.admin import router as admin_router
+from routers.config import router as config_router
+from routers.zlibrary import router as zlibrary_router
+from routers.likes import router as likes_router
+from routers.wishes import router as wishes_router
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -20,8 +24,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(books_router, prefix="/api/books", tags=["books"])
-app.include_router(admin_router, prefix="/api/admin", tags=["admin"])
+app.include_router(books_router,  prefix="/api/books",  tags=["books"])
+app.include_router(admin_router,  prefix="/api/admin",  tags=["admin"])
+app.include_router(config_router,   prefix="/api/config",   tags=["config"])
+app.include_router(zlibrary_router, prefix="/api/zlibrary", tags=["zlibrary"])
+app.include_router(likes_router,   prefix="/api/likes",    tags=["likes"])
+app.include_router(wishes_router,  prefix="/api/wishes",   tags=["wishes"])
 
 # Serve built React frontend (production)
 static_dir = os.path.join(os.path.dirname(__file__), "static")
